@@ -1,15 +1,17 @@
+# So used to typing edit from FreeBSD, just create an alias
 alias edit=nano
+
+# Reviewboard
 alias pr='post-review --server=http://freebsd-test/ --username=bert.regeer -o'
+
+# Set up an alias for vim
 alias vim='/usr/bin/vim'
 
+# The default editor is vim, we export using a full path to the binary because for some reason it will exit with -1 otherwise which will cause hg and svn commits to fail
 export EDITOR=/usr/bin/vim
 
-##
-# Your previous /Users/xistence/.bash_profile file was backed up as /Users/xistence/.bash_profile.macports-saved_2010-08-09_at_12:23:11
-##
-
-# MacPorts Installer addition on 2010-08-09_at_12:23:11: adding an appropriate PATH variable for use with MacPorts.
+# Add MacPorts to my path
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-# Finished adapting your PATH environment variable for use with MacPorts.
 
+# I'm lazy, and qmake for some reason wants to use Xcode as the default build environment on Mac OS X.
 alias qm='qmake -r -spec macx-g++'
