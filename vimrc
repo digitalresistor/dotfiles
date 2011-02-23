@@ -56,6 +56,8 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1          " Quit on opening files from the tree
 let NERDTreeHighlightCursorline=1 " Highlight the selected entry in the tree
 
+map ,t <Plug>TaskList
+
 inoremap <silent> [26~ <Esc>:set paste<CR>:insert<CR>/** $Id$ */<CR>/**<CR> * @file <C-R>=expand("%:t")<CR><CR> * @author Bert JW Regeer (bert.regeer@ip3corp.com)<CR> * @author iP3<CR> * @date <C-R>=strftime("%Y-%m-%d")<CR><CR> */<CR>/****************************************************************************<CR> ** Copyright (C) 2009-2010 ip3 Corporation. All rights reserved.          **<CR> ****************************************************************************/<CR><CR>.<CR>:set nopaste<CR>i
 inoremap <silent> [25~ /**<CR>@brief<CR>@details<CR>@param<CR>@returns<CR>/<CR>
 
