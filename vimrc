@@ -46,7 +46,7 @@ nmap ,N :NERDTreeClose<CR>
 nmap ,l :BufExplorer<CR>
 
 " Store the bookmarks file
-let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
+let NERDTreeBookmarksFile=expand("~/.vim/NERDTreeBookmarks")
 
 " Don't display these kinds of files
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
@@ -88,3 +88,14 @@ endfunction
 
 noremap <silent> [28~ :call <SID>InsertGuard()<CR>
 inoremap <silent> [28~ <Esc>:call <SID>InsertGuard()<CR>
+
+" Setting up some defaults for Snipmate, these should be overriden in
+" .vimrc.local
+
+let g:snips_author = 'Charlie Root'
+let g:snips_email  = 'root@localhost'
+let g:snips_copyright = 'Example Corp.'
+
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local"
+endif
