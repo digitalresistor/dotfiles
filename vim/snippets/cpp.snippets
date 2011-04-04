@@ -72,4 +72,24 @@ snippet runtime_error
 	        $1() 
 	            : std::runtime_error("${2:Some error has occured}") { };
 	};
+
+snippet fheader
+	/**
+	 * @file `expand("%:t")`
+	 * @author `g:snips_author` <`g:snips_email`>
+	 * @date `strftime("%Y-%m-%d")` 
+	 */
+
+snippet copyright
+	/**
+	 * Copyright (c) `strftime("%Y")` `g:snips_copyright`. All rights reserved.
+	 */
+
+snippet funcheader
+	/**
+	 * @brief ${1}
+	 * @details ${2}
+	 * @param ${3}
+	 * @returns ${4}
+	 */
 	
