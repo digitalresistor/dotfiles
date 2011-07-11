@@ -22,6 +22,13 @@ set number
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title
 
+" Set the max height for the popup menu with suggestions
+set pumheight=15
+
+" Disable the scratch/preview window. Not sure how it works, and it annoyed
+" me.
+set completeopt=menu,menuone,longest
+
 set pastetoggle=<F2>
 
 set background=dark
@@ -84,6 +91,13 @@ endfunction
 noremap <silent> [28~ :call <SID>InsertGuard()<CR>
 inoremap <silent> [28~ <Esc>:call <SID>InsertGuard()<CR>
 
+" Enable supertab context completion
+let g:SuperTabDefaultCompletionType = "context"
+
+" Enable some features of clang_complete
+" we disable auto-complete because it isn't always necessary and supertab will
+" take care of it.
+let g:clang_complete_auto = 0
 let g:clang_complete_copen = 1
 let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
 let g:clang_use_library = 1
