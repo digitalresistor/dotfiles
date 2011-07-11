@@ -84,16 +84,16 @@ endfunction
 noremap <silent> [28~ :call <SID>InsertGuard()<CR>
 inoremap <silent> [28~ <Esc>:call <SID>InsertGuard()<CR>
 
+let g:clang_complete_copen = 1
+let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
+let g:clang_use_library = 1
+
 " Setting up some defaults for Snipmate, these should be overriden in
 " .vimrc.local
 
 let g:snips_author = 'Charlie Root'
 let g:snips_email  = 'root@localhost'
 let g:snips_copyright = 'Example Corp.'
-
-let g:clang_complete_copen = 1
-let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
-let g:clang_use_library = 1
 
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local"
