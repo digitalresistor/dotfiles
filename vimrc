@@ -91,6 +91,10 @@ let g:snips_author = 'Charlie Root'
 let g:snips_email  = 'root@localhost'
 let g:snips_copyright = 'Example Corp.'
 
+let g:clang_complete_copen = 1
+let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
+let g:clang_use_library = 1
+
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local"
 endif
