@@ -1,0 +1,5 @@
+*.o
+*.swp
+*.sconsign*
+*.pyc
+.clang_complete
