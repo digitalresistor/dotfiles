@@ -3,3 +3,4 @@
 *.sconsign*
 *.pyc
 .clang_complete
+.DS_Store
