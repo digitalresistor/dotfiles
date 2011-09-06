@@ -38,8 +38,11 @@ if has("gui_running")
     colorscheme earendel
     au FocusLost * :wa
     au BufAdd,BufNewFile * :set noinsertmode
+    " Map function keys to their terminal equivalent
     map <F15> [28~
     imap <F15> [28~
+    map <F16> [29~
+    imap <F16> [29~
 endif
 
 syntax on
@@ -90,6 +93,8 @@ endfunction
 
 noremap <silent> [28~ :call <SID>InsertGuard()<CR>
 inoremap <silent> [28~ <Esc>:call <SID>InsertGuard()<CR>
+
+noremap <silent> [29~ :%s/\s\+$//e<CR>
 
 " Enable supertab context completion
 let g:SuperTabDefaultCompletionType = "context"
