@@ -26,10 +26,13 @@ snippet cl
 	{
 	    public:
 	        $1(${2:arguments});
-	        virtual ~$1();
+	
+	virtual ~$1();
 
 	    private:
-	        ${4:/* data */}
+	
+	${4:/* data */}
+	
 	};
 
 # Disallow copy and assign
@@ -44,7 +47,7 @@ snippet forv
 	    ${3:/* use a here */}
 	}
 
-snippet fixture
+snippet bfixture
 	struct ${1:`Filename('_$1_fixture', '_my_fixture')`} {
 	    $1() {
 	        ${4:/* Setup */}
@@ -54,16 +57,41 @@ snippet fixture
 	        ${5:/* Teardown */}
 	    }
 
-	    ${3:/* Variables */}
+	
+	${3:/* Variables */}
 	};
 
 	BOOST_FIXTURE_TEST_SUITE(${2:`Filename('', 'test')`}, $1)
 	    ${6: /* Tests */}
-	BOOST_AUTO_TEST_SUITE_END()
+	BOOST_AUTO_TEST_SUITE_E
+	ND()
 
 snippet btest
 	BOOST_AUTO_TEST_CASE(${1:name_of_test}) {
 	    ${2:/* Test code */}
+	}
+
+snippet gfixture
+	class ${1:`Filename('$1_t', 'name')`} : public ::testing::Test
+	{
+		public:
+			$1(${2}) {
+
+			}
+			~$1() {
+
+			}
+	};
+	${3}
+
+snippet gtest
+	TEST(${1:module_name}, ${2:test_name}) {
+		${3:/* Test code */}
+	}
+
+snippet gtestf
+	TEST_F(${1:`Filename('$1_t', 'name')`}, ${2:test_name}) {
+		${3:/* Test code */}
 	}
 
 snippet runtime_error
