@@ -26,13 +26,10 @@ snippet cl
 	{
 	    public:
 	        $1(${2:arguments});
-	
-	virtual ~$1();
+			virtual ~$1();
 
 	    private:
-	
-	${4:/* data */}
-	
+			${4:/* data */}
 	};
 
 # Disallow copy and assign
@@ -63,8 +60,7 @@ snippet bfixture
 
 	BOOST_FIXTURE_TEST_SUITE(${2:`Filename('', 'test')`}, $1)
 	    ${6: /* Tests */}
-	BOOST_AUTO_TEST_SUITE_E
-	ND()
+	BOOST_AUTO_TEST_SUITE_END()
 
 snippet btest
 	BOOST_AUTO_TEST_CASE(${1:name_of_test}) {
