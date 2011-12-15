@@ -107,8 +107,8 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 1
 let g:clang_complete_copen = 1
-let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
-let g:clang_use_library = 1
+"let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
+"let g:clang_use_library = 1
 
 " Setting up some defaults for Snipmate, these should be overriden in
 " .vimrc.local
