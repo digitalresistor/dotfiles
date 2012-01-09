@@ -106,7 +106,7 @@ let g:SuperTabDefaultCompletionType = "context"
 " take care of it.
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 1
-let g:clang_complete_copen = 1
+let g:clang_complete_copen = 0
 "let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
 "let g:clang_use_library = 1
 
