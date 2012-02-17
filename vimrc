@@ -132,6 +132,9 @@ inoremap <silent> [28~ :InsertGuard<CR>
 " Kills empty whitespace. Makes git extremely happy.
 noremap <silent> [29~ :%s/\s\+$//e<CR>
 
+" This was bothering the fuck out of me ...
+command! Q q " Bind :Q to :q
+
 " Enable supertab context completion
 let g:SuperTabDefaultCompletionType = "context"
 
