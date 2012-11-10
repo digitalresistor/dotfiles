@@ -1,26 +1,28 @@
-set nocp
+set nocp                " We are not compatible with old vi
 
-filetype off
+filetype off            " This fixes potential issues with pathogen and loading new filetypes.
 
 " Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()  " Infect our paths and load pathogen
+call pathogen#helptags() " Pathogen should create helptags for all of the new bundles loaded
+
+runtime macros/matchit.vim  " Cycle through if statements using %
 
 filetype indent plugin on
 
-set autoindent
-set smartindent
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set ruler
-set scrolloff=10
+set autoindent          " uses the indent from the previous line.
+set expandtab           " use spaces, not tabs
+set tabstop=4           " a tab is four spaces
+set shiftwidth=4        " an autoindent (with <<) is four spaces
+set softtabstop=4       "
+set ruler               " show the cursor position all the time
+set scrolloff=10        " have some context around the current line always on screen
 "set hidden
-set number
+set number              " line numbers (number|nonumber)
 set wildignore=*.swp,*.bak,*.pyc,*.class
-set title
+set showcmd             " display incomplete commands
+set history=200         " remember more Ex commands
 
 " Set the max height for the popup menu with suggestions
 set pumheight=15
@@ -29,31 +31,83 @@ set pumheight=15
 " me.
 set completeopt=menu,menuone,longest
 
-set pastetoggle=<F2>
+set pastetoggle=<F2>    " Turn on/off paste insertion
 
 set background=dark
 
 if has("gui_running")
     set guioptions=egmt
     colorscheme earendel
-    au FocusLost * :wa
-    au TabEnter * stopinsert
+
+    if has("autocmd")
+        au FocusLost * :wa          " Write all upon losing focus
+        au TabEnter * stopinsert    " When changing tabs, exit insert mode
+    endif
+
     " Map function keys to their terminal equivalent
+
+    " Maps to InsertGuard
     map <F15> [28~
     imap <F15> [28~
+
+    " Maps to InserGuard (laptops don't have F13 - F19)
     map <F12> [28~
     imap <F12> [28~
+
+    " Maps to killing whitespace
     map <F16> [29~
     imap <F16> [29~
+
+    " Maps to killing whitespace
+    map <F11> [29~
+    imap <F11> [29~
 endif
 
-syntax on
+" Sets up wrapping. Thanks @geoffgarside, calling functions from auto commands
+" should have come naturally, but I never really thought about it!
+function s:setupWrapping()
+    set wrap
+    set wrapmargin=2
+    " The above two don't matter when the following is set ... but leaving it
+    " for those times that I want to disable tw without disabling soft-wrap.
+    set textwidth=79
+endfunction
 
+" If we get called without any arguments, pop open the SessionList. If we get
+" opened with an argument we call FileExplorer, which lets NERDTree do its
+" thing, if it is a directory it takes over and shows it, if it is a new file
+" it does nothing. Bloody fantastic!
+function s:NERDTreeOrSession()
+    if !argc()
+        silent! SessionList
+    else
+        silent! FileExplorer
+    endif
+endfunction
+
+if has("autocmd")
+    " Make sure all markdown files have the correct filetype set and setup wrapping
+    au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
+
+    " Treat JSON files like JavaScript
+    au BufNewFile,BufRead *.json set ft=javascript
+
+    " Start with NERDTree or Session management
+    au vimenter * call s:NERDTreeOrSession()
+endif
+
+syntax on               " I like syntax highlighting, you like syntax highlight, so lets turn it on.
+
+" Lets use Command-T
+nmap ,m :CommandT<CR>
+
+" Open new NERD Tree window
 nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap ,N :NERDTreeClose<CR>
+"nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
 
-nmap ,l :BufExplorer<CR>
+" Set variables for Command T
+let g:CommandTMaxHeight=10
+let g:CommandTMinHeight=4
 
 " Store the bookmarks file
 let NERDTreeBookmarksFile=expand("~/.vim/NERDTreeBookmarks")
@@ -70,32 +124,12 @@ let NERDTreeHighlightCursorline=1 " Highlight the selected entry in the tree
 
 map ,t <Plug>TaskList
 
-" function to insert a C/C++ header file guard
-function! s:InsertGuard()
-    let randlen = 7
-    let randnum = system("xxd -c " . randlen * 2 . " -l " . randlen . " -p /dev/urandom")
-    let randnum = strpart(randnum, 0, randlen * 2)
-    let fname = expand("%")
-    let lastslash = strridx(fname, "/")
-    if lastslash >= 0
-        let fname = strpart(fname, lastslash+1)
-    endif
-    let fname = substitute(fname, "[^a-zA-Z0-9]", "_", "g")
-    let randid = toupper(fname . "_" . randnum)
-    exec 'norm O#ifndef ' . randid
-    exec 'norm o#define ' . randid
-    exec 'norm o'
-    let origin = getpos('.')
-    exec '$norm o#endif /* ' . randid . ' */'
-    norm o
-    -norm O
-    call setpos('.', origin)
-    norm w
-endfunction
+" Inserts a C/C++ IFNDEF/DEFINE/ENDIF guard around header code for multiple
+" inclusions.
+noremap <silent> [28~ :InsertGuard<CR>
+inoremap <silent> [28~ :InsertGuard<CR>
 
-noremap <silent> [28~ :call <SID>InsertGuard()<CR>
-inoremap <silent> [28~ <Esc>:call <SID>InsertGuard()<CR>
-
+" Kills empty whitespace. Makes git extremely happy.
 noremap <silent> [29~ :%s/\s\+$//e<CR>
 
 " Enable supertab context completion

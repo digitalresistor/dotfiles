@@ -5,3 +5,5 @@
 *.pyc
 .clang_complete
 .DS_Store
+
+doc/tags
