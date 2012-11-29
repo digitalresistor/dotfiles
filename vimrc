@@ -23,6 +23,7 @@ set number              " line numbers (number|nonumber)
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set showcmd             " display incomplete commands
 set history=200         " remember more Ex commands
+set cmdheight=1         " Sets the command line height to 1
 
 " Set the max height for the popup menu with suggestions
 set pumheight=15
@@ -134,6 +135,8 @@ noremap <silent> [29~ :%s/\s\+$//e<CR>
 
 " This was bothering the fuck out of me ...
 command! Q q " Bind :Q to :q
+command! W w " Bind :W to :w
+command! Wq wq " Bind :Wq to :wq
 
 " Enable supertab context completion
 let g:SuperTabDefaultCompletionType = "context"
