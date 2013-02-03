@@ -150,6 +150,15 @@ let g:clang_complete_copen = 1
 "let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
 "let g:clang_use_library = 1
 
+" UltiSnips set up
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsDontReverseSearchPath="1"
+
 " Setting up some defaults for Snipmate, these should be overriden in
 " .vimrc.local
 
