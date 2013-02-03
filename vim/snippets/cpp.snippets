@@ -1,135 +1,145 @@
 # Namespace
-snippet Ns
-	/**
-	 * @namespace $1
-	 * @brief ${2:A brief description of the namespace}
-	 */
-	namespace ${1:`Filename('', 'my')`} 
-	{
-	    ${3}
-	} /* namespace $1 */
+snippet Ns "Ns"
+/**
+ * @namespace $1
+ * @brief ${2:A brief description of the namespace}
+ */
+namespace ${1:`!v Filename('', 'my')`} 
+{
+    ${3}
+} /* namespace $1 */
+endsnippet
 
 # Namespace
-snippet ns Our personal snippet for namespaces #1
-	namespace ${1:`Filename('', 'my')`}
-	{
-	    ${2}
-	} /* namespace $1 */
+snippet ns "Our personal snippet for namespaces #1"
+namespace ${1:`!v Filename('', 'my')`}
+{
+    ${2}
+} /* namespace $1 */
+endsnippet
 
 # Class
-snippet cl Our personal snipper for classes #1
-	/**
-	 * @class $1
-	 * @brief ${3:A brief description of the class}
-	 */
-	class ${1:`Filename('$1_t', 'name')`} 
-	{
-	    public:
-	        $1(${2:arguments});
-			virtual ~$1();
-
-	    private:
-			${4:/* data */}
-	};
+snippet cl "Our personal snipper for classes #1"
+/**
+ * @class $1
+ * @brief ${3:A brief description of the class}
+ */
+class ${1:`!v Filename('$1_t', 'name')`} 
+{
+    public:
+        $1(${2:arguments});
+		virtual ~$1();
+    private:
+		${4:/* data */}
+};
+endsnippet
 
 # Disallow copy and assign
-snippet disallow
-	// Disallow the copying and assigning of this class
-	${1:TypeName}(const $1&);
-	void operator=(const $1&);
+snippet disallow "disallow"
+// Disallow the copying and assigning of this class
+${1:TypeName}(const $1&);
+void operator=(const $1&);
+endsnippet
 
 # Easily add a for loop that goes through a vector
-snippet forv
-	for (${1:std::vector<int>::iterator} a = ${2:myvector}.begin(), b = $2.end(); a != b; a++) {
-	    ${3:/* use a here */}
-	}
+snippet forv "forv"
+for (${1:std::vector<int>::iterator} a = ${2:myvector}.begin(), b = $2.end(); a != b; a++) {
+    ${3:/* use a here */}
+}
+endsnippet
 
-snippet bfixture
-	struct ${1:`Filename('_$1_fixture', '_my_fixture')`} {
-	    $1() {
-	        ${4:/* Setup */}
-	    }
+snippet bfixture "bfixture"
+struct ${1:`!v Filename('_$1_fixture', '_my_fixture')`} {
+    $1() {
+        ${4:/* Setup */}
+    }
+    ~$1() {
+        ${5:/* Teardown */}
+    }
+${3:/* Variables */}
+};
+BOOST_FIXTURE_TEST_SUITE(${2:`!v Filename('', 'test')`}, $1)
+    ${6: /* Tests */}
+BOOST_AUTO_TEST_SUITE_END()
+endsnippet
 
-	    ~$1() {
-	        ${5:/* Teardown */}
-	    }
+snippet btest "btest"
+BOOST_AUTO_TEST_CASE(${1:name_of_test}) {
+    ${2:/* Test code */}
+}
+endsnippet
 
-	
-	${3:/* Variables */}
-	};
+snippet gfixture "gfixture"
+class ${1:`!v Filename('$1_t', 'name')`} : public ::testing::Test
+{
+	public:
+		$1(${2}) {
+		}
+		~$1() {
+		}
+};
+${3}
+endsnippet
 
-	BOOST_FIXTURE_TEST_SUITE(${2:`Filename('', 'test')`}, $1)
-	    ${6: /* Tests */}
-	BOOST_AUTO_TEST_SUITE_END()
+snippet gtest "gtest"
+TEST(${1:module_name}, ${2:test_name}) {
+	${3:/* Test code */}
+}
+endsnippet
 
-snippet btest
-	BOOST_AUTO_TEST_CASE(${1:name_of_test}) {
-	    ${2:/* Test code */}
-	}
+snippet gtestf "gtestf"
+TEST_F(${1:`!v Filename('$1_t', 'name')`}, ${2:test_name}) {
+	${3:/* Test code */}
+}
+endsnippet
 
-snippet gfixture
-	class ${1:`Filename('$1_t', 'name')`} : public ::testing::Test
-	{
-		public:
-			$1(${2}) {
+snippet runtime_error "runtime_error"
+class ${1:ExceptionClass} : public std::runtime_error {
+    public:
+        $1() 
+            : std::runtime_error("${2:Some error has occured}") { };
+};
+endsnippet
 
-			}
-			~$1() {
+snippet fheader "fheader"
+/**
+ * @file `!v expand("%:t")`
+ * @author `!v g:snips_author` <`!v g:snips_email`>
+ * @date `!v strftime("%Y-%m-%d")`
+ */
+endsnippet
 
-			}
-	};
-	${3}
+snippet copyright "copyright"
+/**
+ * Copyright (c) `!v strftime("%Y")` `!v g:snips_copyright`. All rights reserved.
+ */
+endsnippet
 
-snippet gtest
-	TEST(${1:module_name}, ${2:test_name}) {
-		${3:/* Test code */}
-	}
+snippet funcheader "funcheader"
+/**
+ * @brief ${1}
+ * @details ${2}
+ * @param ${3}
+ * @returns ${4}
+ */
+endsnippet
 
-snippet gtestf
-	TEST_F(${1:`Filename('$1_t', 'name')`}, ${2:test_name}) {
-		${3:/* Test code */}
-	}
+snippet licobsd "licobsd"
+/**
+ * Copyright (c) `!v strftime("%Y")` `!v g:snips_copyright`;
+ *
+ * Permission to use, copy, modify, and distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+**/
+endsnippet
 
-snippet runtime_error
-	class ${1:ExceptionClass} : public std::runtime_error {
-	    public:
-	        $1() 
-	            : std::runtime_error("${2:Some error has occured}") { };
-	};
 
-snippet fheader
-	/**
-	 * @file `expand("%:t")`
-	 * @author `g:snips_author` <`g:snips_email`>
-	 * @date `strftime("%Y-%m-%d")`
-	 */
-
-snippet copyright
-	/**
-	 * Copyright (c) `strftime("%Y")` `g:snips_copyright`. All rights reserved.
-	 */
-
-snippet funcheader
-	/**
-	 * @brief ${1}
-	 * @details ${2}
-	 * @param ${3}
-	 * @returns ${4}
-	 */
-
-snippet licobsd
-	/**
-	 * Copyright (c) `strftime("%Y")` `g:snips_copyright`;
-	 *
-	 * Permission to use, copy, modify, and distribute this software for any
-	 * purpose with or without fee is hereby granted, provided that the above
-	 * copyright notice and this permission notice appear in all copies.
-	 *
-	 * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-	 * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-	 * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-	 * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-	 * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-	 * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-	 * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-	**/
