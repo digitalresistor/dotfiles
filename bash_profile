@@ -1,17 +1,9 @@
-# So used to typing edit from FreeBSD, just create an alias
-alias edit=nano
-
-# Reviewboard
-alias pr='post-review --server=http://freebsd-test/ --username=bert.regeer -o'
-
-# Set up an alias for vim
-alias vim='/usr/bin/vim'
-
-# The default editor is vim, we export using a full path to the binary because for some reason it will exit with -1 otherwise which will cause hg and svn commits to fail
 export EDITOR=/usr/bin/vim
+export PATH=/usr/local/share/python:/usr/local/bin:$PATH:~xistence/Applications/:/usr/X11R6/bin
+export SCONS_LIB_DIR=/usr/local/Cellar/scons/2.0.1/lib/scons
 
-# Add MacPorts to my path
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+alias edit=$EDITOR
 
-# I'm lazy, and qmake for some reason wants to use Xcode as the default build environment on Mac OS X.
-alias qm='qmake -r -spec macx-g++'
+function activate {
+    source ~/.ve/$1/bin/activate
+}
