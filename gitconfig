@@ -1,0 +1,7 @@
+[user]
+	name = Bert JW Regeer
+	email = bertjw@regeer.org
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/xistence/.gitignore
