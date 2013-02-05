@@ -24,6 +24,10 @@ function winname {
   printf "\e]2;$1\a"
 }
 
+function random_string {
+    cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-fA-F0-9' | head -c $1
+}
+
 if [ -f ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
