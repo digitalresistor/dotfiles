@@ -1,5 +1,5 @@
 export EDITOR=/usr/bin/vim
-export PATH=/usr/local/bin:$PATH:~xistence/Applications/
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:~xistence/Applications/
 
 alias edit=$EDITOR
 
@@ -26,6 +26,15 @@ function winname {
 
 function random_string {
     cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-fA-F0-9' | head -c $1
+}
+
+function start_smtpd {
+    if [ ""$1 == "" ]; then
+        PORT=25
+    else
+        PORT=$1
+    fi
+    python -m smtpd -n -c DebuggingServer localhost:$PORT
 }
 
 if [ -f ~/.bash_profile.local ]; then
