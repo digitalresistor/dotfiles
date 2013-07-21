@@ -90,8 +90,11 @@ if has("autocmd")
     " Make sure all markdown files have the correct filetype set and setup wrapping
     au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
 
+    " Mako files need to be treated correctly ...
+    au BufRead,BufNewFile *.mako setf mako.html
+
     " Treat JSON files like JavaScript
-    au BufNewFile,BufRead *.json set ft=javascript
+    au BufNewFile,BufRead *.json setf javascript
 
     " Start with NERDTree or Session management
     au vimenter * call s:NERDTreeOrSession()
@@ -147,8 +150,8 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 1
 let g:clang_complete_copen = 1
-"let g:clang_library_path = "/Developer/usr/clang-ide/lib/"
-"let g:clang_use_library = 1
+let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
+let g:clang_snippets_engine = "ultisnips"
 
 " UltiSnips set up
 
