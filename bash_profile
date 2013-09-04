@@ -37,6 +37,19 @@ function start_smtpd {
     python -m smtpd -n -c DebuggingServer localhost:$PORT
 }
 
+function run_gmalloc {
+    # Sub shell
+    (
+    export MallocStackLogging=1
+    export MallocCheckHeapStart=1000
+    export MallocCheckHeapEach=100
+    export MallocScribble=1
+    export MallocPreScribble=1
+    export MallocStackLoggingNoCompact=1
+
+    $@)
+}
+
 if [ -f ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
