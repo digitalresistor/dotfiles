@@ -40,3 +40,6 @@
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = git://github.com/SirVer/ultisnips.git
+[submodule "vim/bundle/ycm"]
+	path = vim/bundle/ycm
+	url = git@github.com:Valloric/YouCompleteMe.git
