@@ -143,16 +143,6 @@ command! Wq wq " Bind :Wq to :wq
 
 " Enable supertab context completion
 let g:SuperTabDefaultCompletionType = "context"
-
-" Enable some features of clang_complete
-" we disable auto-complete because it isn't always necessary and supertab will
-" take care of it.
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 1
-let g:clang_complete_copen = 1
-let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-let g:clang_snippets_engine = "ultisnips"
-
 " UltiSnips set up
 
 let g:UltiSnipsExpandTrigger="<tab>"
