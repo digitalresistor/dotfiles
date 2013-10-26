@@ -141,8 +141,6 @@ command! Q q " Bind :Q to :q
 command! W w " Bind :W to :w
 command! Wq wq " Bind :Wq to :wq
 
-" Enable supertab context completion
-let g:SuperTabDefaultCompletionType = "context"
 " UltiSnips set up
 
 let g:UltiSnipsExpandTrigger="<tab>"
