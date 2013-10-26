@@ -96,6 +96,9 @@ if has("autocmd")
     " Treat JSON files like JavaScript
     au BufNewFile,BufRead *.json setf javascript
 
+    " Treat wscript (waf) files as Python
+    au BufNewFile,Bufread wscript setf python
+
     " Start with NERDTree or Session management
     au vimenter * call s:NERDTreeOrSession()
 endif
