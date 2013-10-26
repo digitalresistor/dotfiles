@@ -1,4 +1,12 @@
-export EDITOR=/usr/bin/vim
+if [ -x /usr/local/bin/vim ]; then
+    EDITOR=/usr/local/bin/vim
+elif [ -x /usr/bin/vim ]; then
+    EDITOR=/usr/bin/vim
+else
+    EDITOR=vi
+fi
+
+export EDITOR
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:~xistence/Applications/
 
 alias edit=$EDITOR
