@@ -62,6 +62,13 @@ function run_gmalloc {
     $@)
 }
 
+function tox_env {
+    # This is where buildout.python installs it's stuff by default
+    if [ -d /opt/local/bin ]; then
+        export PATH=/opt/local/bin:$PATH
+    fi
+}
+
 if [ -f ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
