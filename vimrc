@@ -91,7 +91,7 @@ if has("autocmd")
     au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
 
     " Mako files need to be treated correctly ...
-    au BufRead,BufNewFile *.mako setf mako.html
+    au BufRead,BufNewFile *.mako setf html.mako
 
     " Treat JSON files like JavaScript
     au BufNewFile,BufRead *.json setf javascript
