@@ -69,6 +69,15 @@ function tox_env {
     fi
 }
 
+function run_forever {
+    SLEEP_COUNT=$1
+    shift
+    while true; do
+        $@
+        sleep $SLEEP_COUNT
+    done
+}
+
 if [ -f ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
