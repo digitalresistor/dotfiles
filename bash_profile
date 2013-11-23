@@ -19,6 +19,10 @@ function activate {
     if [ -d ~/.ve/$1 ]; then
         echo "Activating $1 virtual environment"
         source ~/.ve/$1/bin/activate
+
+        export GEM_HOME="$VIRTUAL_ENV/gems"
+        export GEM_PATH=""
+        export PATH=$PATH:"$GEM_HOME/bin"
     else
         echo "That virtual environment does not exist!"
     fi
