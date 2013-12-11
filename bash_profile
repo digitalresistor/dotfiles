@@ -1,4 +1,12 @@
-export EDITOR=/usr/bin/vim
+if [ -x /usr/local/bin/vim ]; then
+    EDITOR=/usr/local/bin/vim
+elif [ -x /usr/bin/vim ]; then
+    EDITOR=/usr/bin/vim
+else
+    EDITOR=vi
+fi
+
+export EDITOR
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH:~xistence/Applications/
 
 alias edit=$EDITOR
@@ -11,6 +19,10 @@ function activate {
     if [ -d ~/.ve/$1 ]; then
         echo "Activating $1 virtual environment"
         source ~/.ve/$1/bin/activate
+
+        export GEM_HOME="$VIRTUAL_ENV/gems"
+        export GEM_PATH=""
+        export PATH=$PATH:"$GEM_HOME/bin"
     else
         echo "That virtual environment does not exist!"
     fi
@@ -48,6 +60,22 @@ function run_gmalloc {
     export MallocStackLoggingNoCompact=1
 
     $@)
+}
+
+function tox_env {
+    # This is where buildout.python installs it's stuff by default
+    if [ -d /opt/local/bin ]; then
+        export PATH=/opt/local/bin:$PATH
+    fi
+}
+
+function run_forever {
+    SLEEP_COUNT=$1
+    shift
+    while true; do
+        $@
+        sleep $SLEEP_COUNT
+    done
 }
 
 if [ -f ~/.bash_profile.local ]; then

@@ -96,6 +96,9 @@ if has("autocmd")
     " Treat JSON files like JavaScript
     au BufNewFile,BufRead *.json setf javascript
 
+    " Treat wscript (waf) files as Python
+    au BufNewFile,Bufread wscript setf python
+
     " Start with NERDTree or Session management
     au vimenter * call s:NERDTreeOrSession()
 endif
@@ -141,23 +144,11 @@ command! Q q " Bind :Q to :q
 command! W w " Bind :W to :w
 command! Wq wq " Bind :Wq to :wq
 
-" Enable supertab context completion
-let g:SuperTabDefaultCompletionType = "context"
-
-" Enable some features of clang_complete
-" we disable auto-complete because it isn't always necessary and supertab will
-" take care of it.
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 1
-let g:clang_complete_copen = 1
-let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/"
-let g:clang_snippets_engine = "ultisnips"
-
 " UltiSnips set up
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
 let g:UltiSnipsDontReverseSearchPath="1"

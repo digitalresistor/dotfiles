@@ -1,9 +1,3 @@
-[submodule "vim/bundle/clang_complete"]
-	path = vim/bundle/clang_complete
-	url = git@github.com:bertjwregeer/clang_complete.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab
 [submodule "vim/bundle/sessionman"]
 	path = vim/bundle/sessionman
 	url = https://github.com/vim-scripts/sessionman.vim.git
@@ -34,9 +28,12 @@
 [submodule "vim/bundle/vim-git"]
 	path = vim/bundle/vim-git
 	url = https://github.com/tpope/vim-git.git
-[submodule "vim/bundle/vim-autoclose"]
-	path = vim/bundle/vim-autoclose
-	url = https://github.com/Townk/vim-autoclose.git
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
-	url = git://github.com/SirVer/ultisnips.git
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "vim/bundle/ycm"]
+	path = vim/bundle/ycm
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim/bundle/delimitMate"]
+	path = vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
