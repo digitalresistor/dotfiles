@@ -1,9 +1,10 @@
 [user]
 	name = Bert JW Regeer
-	email = bert.regeer@absio.com
 [color]
 	ui = true
 [core]
 	excludesfile = /Users/xistence/.gitignore
 [push]
 	default = simple
+[init]
+    templatedir = ~/dotfiles/git/templates
