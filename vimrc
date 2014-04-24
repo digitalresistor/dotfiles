@@ -150,7 +150,7 @@ let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 let g:UltiSnipsDontReverseSearchPath="1"
 
 " Setting up some defaults for Snipmate, these should be overriden in
