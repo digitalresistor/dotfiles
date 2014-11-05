@@ -74,6 +74,7 @@ function run_forever {
     shift
     while true; do
         $@
+        echo "Sleeping $SLEEP_COUNT seconds"
         sleep $SLEEP_COUNT
     done
 }
