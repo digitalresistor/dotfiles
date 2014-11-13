@@ -69,13 +69,37 @@ function tox_env {
     fi
 }
 
+function _shutdown_sleep {
+    return 0
+}
+
+function sleep_countdown {
+    _SLEEP_COUNT=$1
+
+    trap _shutdown_sleep SIGINT
+
+    while [ $_SLEEP_COUNT -gt 0 ]; do
+        printf "Sleeping %d more seconds." $_SLEEP_COUNT
+        sleep 1
+
+        if [ $? != 0 ]; then
+            echo "Caught Ctrl+C, returning early"
+            trap SIGINT
+            return 1
+        else
+            printf "\033[2K\r"
+            _SLEEP_COUNT=$(( _SLEEP_COUNT - 1 ))
+        fi
+    done
+    trap SIGINT
+}
+
 function run_forever {
     SLEEP_COUNT=$1
     shift
     while true; do
         $@
-        echo "Sleeping $SLEEP_COUNT seconds"
-        sleep $SLEEP_COUNT
+        sleep_countdown $SLEEP_COUNT
     done
 }
 
