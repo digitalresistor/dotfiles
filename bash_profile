@@ -69,7 +69,7 @@ function tox_env {
     fi
 }
 
-function _shutdown_sleep {
+_shutdown_sleep () {
     return 0
 }
 
@@ -83,7 +83,6 @@ function sleep_countdown {
         sleep 1
 
         if [ $? != 0 ]; then
-            echo "Caught Ctrl+C, returning early"
             trap SIGINT
             return 1
         else
@@ -100,6 +99,11 @@ function run_forever {
     while true; do
         $@
         sleep_countdown $SLEEP_COUNT
+
+        if [ $? != 0 ]; then
+            echo "To end loop, press ^C"
+            sleep 1
+        fi
     done
 }
 
