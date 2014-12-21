@@ -40,3 +40,7 @@
 [submodule "vim/bundle/emmet-vim"]
 	path = vim/bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "vim/bundle/html5.vim"]
+	path = vim/bundle/html5.vim
+	url = git@github.com:othree/html5.vim.git
+	branch = master
