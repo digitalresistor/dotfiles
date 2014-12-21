@@ -1,6 +1,7 @@
 *.a
 *.o
 *.swp
+*.swo
 *.sconsign*
 *.pyc
 .clang_complete
