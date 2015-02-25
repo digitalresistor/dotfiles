@@ -62,11 +62,20 @@ function run_gmalloc {
     $@)
 }
 
-function tox_env {
-    # This is where buildout.python installs it's stuff by default
-    if [ -d /opt/local/bin ]; then
-        export PATH=/opt/local/bin:$PATH
+export TOX_PATH=""
+
+function tox {
+    PYENV=$(type -p pyenv)
+
+    if [ ""$TOX_PATH == "" -a -x $PYENV ]; then
+        for pyv in $(pyenv versions --bare); do
+            TOX_PATH="$TOX_PATH:$(pyenv prefix $pyv)/bin"
+        done
     fi
+
+    export TOX_PATH=$TOX_PATH
+
+    env PATH=$TOX_PATH:$PATH tox $@
 }
 
 _shutdown_sleep () {
