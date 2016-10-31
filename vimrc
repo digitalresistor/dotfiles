@@ -113,8 +113,9 @@ nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 "nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
 
 " Set variables for Command T
-let g:CommandTMaxHeight=10
+let g:CommandTMaxHeight=15
 let g:CommandTMinHeight=4
+let g:CommandTWildIgnore=&wildignore .",**/node_modules/*"
 
 " Store the bookmarks file
 let NERDTreeBookmarksFile=expand("~/.vim/NERDTreeBookmarks")
