@@ -174,6 +174,9 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_python_flake8_args = '--ignore=E123 --max-line-length=89'
 let g:syntastic_full_redraws = 1
 
+let g:ale_sign_column_always = 1
+let g:ale_python_flake8_args = '--ignore=E123 --max-line-length=89'
+
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local"
 endif
