@@ -44,7 +44,7 @@
 	path = vim/bundle/html5.vim
 	url = git@github.com:othree/html5.vim.git
 	branch = master
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/ale"]
+	path = vim/bundle/ale
+	url = https://github.com/w0rp/ale.git
 	branch = master
