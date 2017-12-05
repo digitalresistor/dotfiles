@@ -3,7 +3,7 @@
 [color]
 	ui = true
 [core]
-	excludesfile = /Users/xistence/.gitignore
+	excludesfile = /Users/xistence/.gitignore_global
 [push]
 	default = simple
 [init]
