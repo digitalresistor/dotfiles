@@ -171,7 +171,7 @@ let g:snips_copyright = 'Example Corp.'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = '--ignore=E123,E261,E301,E302 --max-line-length=89'
+let g:syntastic_python_flake8_args = '--ignore=E123 --max-line-length=89'
 let g:syntastic_full_redraws = 1
 
 if filereadable(expand("~/.vimrc.local"))
