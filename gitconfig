@@ -1,5 +1,6 @@
 [user]
 	name = Bert JW Regeer
+	signingkey = 6521BC4A45BFCE7A
 [color]
 	ui = true
 [core]
@@ -14,3 +15,5 @@
 	required = true
 [rerere]
 	enabled = true
+[commit]
+	gpgsign = true
