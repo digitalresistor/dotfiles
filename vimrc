@@ -177,6 +177,16 @@ let g:syntastic_full_redraws = 1
 let g:ale_sign_column_always = 1
 let g:ale_python_flake8_args = '--ignore=E123 --max-line-length=89'
 
+let g:ale_fixers = {
+  \   'python': [
+  \       'remove_trailing_lines',
+  \       'trim_whitespace',
+  \       'add_blank_lines_for_python_control_statements',
+  \       'isort',
+  \       'autopep8',
+  \   ],
+  \}
+
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local"
 endif
