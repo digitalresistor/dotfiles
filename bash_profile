@@ -75,7 +75,7 @@ function tox {
 
     export TOX_PATH=$TOX_PATH
 
-    env PATH=$TOX_PATH:$PATH tox $@
+    env PATH="$TOX_PATH:$PATH" tox $@
 }
 
 _shutdown_sleep () {
