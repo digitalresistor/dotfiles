@@ -17,3 +17,5 @@
 	enabled = true
 [commit]
 	gpgsign = true
+[protocol "keybase"]
+	allow = always
