@@ -3,7 +3,7 @@ if [ -x /usr/local/bin/vim ]; then
 elif [ -x /usr/bin/vim ]; then
     EDITOR=/usr/bin/vim
 else
-    EDITOR=vi
+    EDITOR=vim
 fi
 
 export EDITOR
