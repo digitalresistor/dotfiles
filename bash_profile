@@ -120,6 +120,23 @@ function count_redir {
     curl -L -I -D - -o /dev/null $1 | awk 'BEGIN { redir = 0; status = 200; } tolower($1) ~ /http/ { redir=redir+1; status=$2 } tolower($1) ~ /location:/ { print redir, status, $2 } END { print "Completed, with ", redir-1, "redirects. Final result: ", status }'
 }
 
+function curlt() {
+    curl -w "\
+    namelookup:  %{time_namelookup}s\n\
+       connect:  %{time_connect}s\n\
+    appconnect:  %{time_appconnect}s\n\
+   pretransfer:  %{time_pretransfer}s\n\
+      redirect:  %{time_redirect}s\n\
+ starttransfer:  %{time_starttransfer}s\n\
+    time_total:  %{time_total}s\n\
+   size_header:  %{size_header} bytes\n\
+ size_download:  %{size_download} bytes\n\
+speed_download:  %{speed_download} bytes/sec\n\
+  speed_upload:  %{speed_upload} bytes/sec\n\
+---------------\n\
+         total:  %{time_total}s\n" "$@"
+}
+
 if [ -f ~/.bash_profile.local ]; then
     . ~/.bash_profile.local
 fi
