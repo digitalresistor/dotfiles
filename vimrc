@@ -167,8 +167,6 @@ let g:snips_email  = 'root@localhost'
 let g:snips_copyright = 'Example Corp.'
 
 let g:ale_sign_column_always = 1
-let g:ale_python_flake8_args = '--ignore=E123 --max-line-length=89'
-
 let g:ale_fixers = {
   \   'python': [
   \       'remove_trailing_lines',
