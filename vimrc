@@ -1,5 +1,9 @@
 set nocp                " We are not compatible with old vi
 
+" Turn off arbitrary code execution
+set modelines=0
+set nomodeline
+
 filetype off            " This fixes potential issues with pathogen and loading new filetypes.
 
 " Use pathogen to easily modify the runtime path to include all
