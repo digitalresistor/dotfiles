@@ -11,6 +11,22 @@ export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.cargo/bin:$PATH:~/Applications
 
 alias edit=$EDITOR
 
+# Always substitute the prompt each time we switch directories
+setopt prompt_subst
+
+# Hostname:path $/#
+PROMPT='%m:${PWD/#$HOME/~} %# '
+
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+# Eventhough I am a VIM user, I prefer emacs bindings in my shell
+bindkey -e
+
+# I want to be able to search the history with patterns
+bindkey '^R' history-incremental-pattern-search-backward
+
 function lsockets {
     lsof -a -c $1 -i -l -P
 }
