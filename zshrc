@@ -7,7 +7,7 @@ else
 fi
 
 export EDITOR
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH:~xistence/Applications/
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH:~/Applications/
 
 alias edit=$EDITOR
 
