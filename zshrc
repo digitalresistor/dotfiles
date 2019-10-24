@@ -15,7 +15,7 @@ alias edit=$EDITOR
 setopt prompt_subst
 
 # Hostname:path $/#
-PROMPT='%m:${PWD/#$HOME/~} %# '
+PROMPT='%m ${PWD/#$HOME/~} %# '
 
 HISTSIZE=10000
 SAVEHIST=10000
