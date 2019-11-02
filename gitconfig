@@ -1,21 +1,27 @@
 [user]
-	name = Bert JW Regeer
-	signingkey = 6521BC4A45BFCE7A
+    name = Bert JW Regeer
+    signingkey = 6521BC4A45BFCE7A
 [color]
-	ui = true
+    ui = true
 [core]
-	excludesfile = /Users/xistence/.gitignore_global
+    excludesfile = /Users/xistence/.gitignore_global
 [push]
-	default = simple
+    default = simple
 [init]
     templatedir = ~/dotfiles/git/templates
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    required = true
 [rerere]
-	enabled = true
+    enabled = true
 [commit]
-	gpgsign = true
+    gpgsign = true
 [protocol "keybase"]
-	allow = always
+    allow = always
+[transfer]
+    fsckobjects = true
+[fetch]
+    fsckobjects = true
+[receive]
+    fsckObjects = true

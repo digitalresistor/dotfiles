@@ -12,3 +12,7 @@ doc/tags
 # Klocwork
 .kwlp
 .kwps
+
+# YouCompleteMe
+.clangd
+compile_commands.json
