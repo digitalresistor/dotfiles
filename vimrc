@@ -183,7 +183,13 @@ let g:ale_fixers = {
   \       'isort',
   \       'black',
   \   ],
+  \   'cpp': [
+  \       'trim_whitespace',
+  \       'remove_trailing_lines',
+  \       'clang-format',
+  \   ]
   \}
+let g:ale_c_clangformat_options = '--style=webkit --sort-includes'
 
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local"
