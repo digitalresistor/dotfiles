@@ -81,9 +81,9 @@ function run_gmalloc {
 export TOX_PATH=""
 
 function tox {
-    PYENV=$(type -p pyenv)
+    PYENV=$(whence pyenv)
 
-    if [ ""$TOX_PATH == "" -a -x $PYENV ]; then
+    if [ -v TOX_PATH  -a -x $PYENV ]; then
         for pyv in $(pyenv versions --bare | sort -g -r); do
             TOX_PATH="$(pyenv prefix $pyv)/bin:$TOX_PATH"
         done
