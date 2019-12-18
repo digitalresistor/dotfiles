@@ -78,12 +78,10 @@ function run_gmalloc {
     $@)
 }
 
-export TOX_PATH=""
-
 function tox {
     PYENV=$(whence pyenv)
 
-    if [ -v TOX_PATH  -a -x $PYENV ]; then
+    if [[ ! -v TOX_PATH  && -x $PYENV ]]; then
         for pyv in $(pyenv versions --bare | sort -g -r); do
             TOX_PATH="$(pyenv prefix $pyv)/bin:$TOX_PATH"
         done
@@ -136,7 +134,7 @@ function count_redir {
     curl -L -I -D - -o /dev/null $1 | awk 'BEGIN { redir = 0; status = 200; } tolower($1) ~ /http/ { redir=redir+1; status=$2 } tolower($1) ~ /location:/ { print redir, status, $2 } END { print "Completed, with ", redir-1, "redirects. Final result: ", status }'
 }
 
-function curlt() {
+function curlt {
     curl -w "\
     namelookup:  %{time_namelookup}s\n\
        connect:  %{time_connect}s\n\
