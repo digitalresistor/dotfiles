@@ -66,6 +66,9 @@ if has("gui_running")
     " Maps to killing whitespace
     map <F11> [29~
     imap <F11> [29~
+
+    " Set the tab name to the full path
+    set guitablabel=%M%f
 endif
 
 " Sets up wrapping. Thanks @geoffgarside, calling functions from auto commands
