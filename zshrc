@@ -151,6 +151,6 @@ speed_download:  %{speed_download} bytes/sec\n\
          total:  %{time_total}s\n" "$@"
 }
 
-if [ -f ~/.bash_profile.local ]; then
-    . ~/.bash_profile.local
+if [ -f ~/.zsh_profile.local ]; then
+    . ~/.zsh_profile.local
 fi
