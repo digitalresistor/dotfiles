@@ -189,6 +189,8 @@ let g:ale_fixers = {
   \       'clang-format',
   \   ],
   \   'terraform': [
+  \       'remove_trailing_lines',
+  \       'trim_whitespace',
   \       'terraform',
   \   ]
   \}
