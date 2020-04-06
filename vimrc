@@ -187,6 +187,9 @@ let g:ale_fixers = {
   \       'trim_whitespace',
   \       'remove_trailing_lines',
   \       'clang-format',
+  \   ],
+  \   'terraform': [
+  \       'terraform',
   \   ]
   \}
 let g:ale_c_clangformat_options = '--style=webkit --sort-includes'
