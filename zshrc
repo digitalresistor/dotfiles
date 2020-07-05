@@ -151,6 +151,10 @@ speed_download:  %{speed_download} bytes/sec\n\
          total:  %{time_total}s\n" "$@"
 }
 
+function tree {
+    find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+}
+
 if [ -f ~/.zsh_profile.local ]; then
     . ~/.zsh_profile.local
 fi
