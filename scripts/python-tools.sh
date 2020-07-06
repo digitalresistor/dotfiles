@@ -37,9 +37,9 @@ echo "Creating new virtualenv and upgrading pip"
 
 echo "Installing the Python tools"
 
-~/.ve/pytools/bin/pip install -U flake8 black flake8-bugbear pyflakes pylint
+~/.ve/pytools/bin/pip install -U flake8 black flake8-bugbear pyflakes pylint isort
 
-for bin in flake8 black blackd pyflakes pylint;
+for bin in flake8 black blackd pyflakes pylint isort;
 do
     echo "Linking $bin into ~/Applications/"
     ln -s ~/.ve/pytools/bin/$bin ~/Applications/$bin
