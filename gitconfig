@@ -27,3 +27,5 @@
     fsckObjects = true
 [fetch "fsck"]
 	badTimezone = ignore
+[pull]
+	ff = only
