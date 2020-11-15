@@ -28,6 +28,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set showcmd             " display incomplete commands
 set history=200         " remember more Ex commands
 set cmdheight=1         " Sets the command line height to 1
+set noswapfile          " Disable .swp files, we save when a window loses focus and it leaves files all over the filesystem
 
 " Set the max height for the popup menu with suggestions
 set pumheight=15
