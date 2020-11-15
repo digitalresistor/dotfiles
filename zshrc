@@ -17,6 +17,13 @@ setopt prompt_subst
 # Hostname:path $/#
 PROMPT='%m ${PWD/#$HOME/~} %# '
 
+function chpwd_change_tabname {
+    printf "\e]1;${PWD/#$HOME/~}\a"
+}
+
+chpwd_functions=(${chpwd_functions[@]} "chpwd_change_tabname")
+chpwd_change_tabname
+
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
