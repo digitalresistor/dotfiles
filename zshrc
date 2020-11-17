@@ -60,7 +60,7 @@ function winname {
 }
 
 function random_string {
-    cat /dev/urandom | env LC_CTYPE=C tr -cd 'a-fA-F0-9' | head -c $1
+    cat /dev/urandom | env LC_CTYPE=UTF8 tr -cd 'a-fA-F0-9' | head -c $1
 }
 
 function start_smtpd {
