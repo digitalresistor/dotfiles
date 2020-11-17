@@ -166,7 +166,9 @@ let g:UltiSnipsDontReverseSearchPath="1"
 " YouCompleteMe requires knowing where Python is so we don't die when starting
 " in Python 3.x based Virtualenvs.
 
-let g:ycm_path_to_python_interpreter="/usr/local/opt/python@3.8/Frameworks/Python.framework/Versions/3.8/bin/python3"
+if filereadable(expand("~/.ycm.path"))
+    source ~/.ycm.path
+endif
 
 " Setting up some defaults for Snipmate, these should be overriden in
 " .vimrc.local
@@ -198,5 +200,5 @@ let g:ale_fixers = {
 let g:ale_c_clangformat_options = '--style=webkit --sort-includes'
 
 if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local"
+    source ~/.vimrc.local
 endif
