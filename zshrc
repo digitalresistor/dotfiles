@@ -9,6 +9,9 @@ fi
 export EDITOR
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.cargo/bin:$PATH:~/Applications/
 
+# Thanks, but no thanks.
+export HOMEBREW_NO_ANALYTICS=1
+
 alias edit=$EDITOR
 
 # Always substitute the prompt each time we switch directories
