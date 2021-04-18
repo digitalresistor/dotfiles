@@ -186,6 +186,11 @@ let g:ale_fixers = {
   \       'isort',
   \       'black',
   \   ],
+  \   'rust': [
+  \       'remove_trailing_lines',
+  \       'trim_whitespace',
+  \       'rustfmt',
+  \   ],
   \   'cpp': [
   \       'trim_whitespace',
   \       'remove_trailing_lines',
