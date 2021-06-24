@@ -1,17 +1,36 @@
-if [ -x /usr/local/bin/vim ]; then
-    EDITOR=/usr/local/bin/vim
-elif [ -x /usr/bin/vim ]; then
-    EDITOR=/usr/bin/vim
-else
-    EDITOR=vim
-fi
+# Set our preferred EDITOR in this order
+EDITOR_BY_PREF=(
+    /opt/homebrew/bin/nvim
+    /usr/local/bin/nvim
+    /opt/homebrew/bin/vim
+    /usr/local/bin/vim
+    /usr/bin/vim
+    /usr/bin/vi
+    /usr/bin/nano
+)
 
-export EDITOR
+for EDITOR in $EDITOR_BY_PREF; do
+    if [[ -x $EDITOR ]]; then
+        export EDITOR
+        break
+    fi
+done
 
 # Thanks, but no thanks.
 export HOMEBREW_NO_ANALYTICS=1
 
 alias edit=$EDITOR
+
+if [[ "$EDITOR" = */nvim ]]; then
+    alias vim=$EDITOR
+    alias vi=$EDITOR
+fi
+
+HAS_VIMR=$(whence vimr)
+
+if [[ $? -eq 0 && -x $HAS_VIMR ]]; then
+    alias mvim="vimr -n"
+fi
 
 # Always substitute the prompt each time we switch directories
 setopt prompt_subst
@@ -41,7 +60,7 @@ function lsockets {
 }
 
 function activate {
-    if [ -d ~/.ve/$1 ]; then
+    if [[ -d ~/.ve/$1 ]]; then
         echo "Activating $1 virtual environment"
         source ~/.ve/$1/bin/activate
 
@@ -110,11 +129,11 @@ function sleep_countdown {
 
     trap _shutdown_sleep SIGINT
 
-    while [ $_SLEEP_COUNT -gt 0 ]; do
+    while [[ $_SLEEP_COUNT -gt 0 ]]; do
         printf "Sleeping %d more seconds." $_SLEEP_COUNT
         sleep 1
 
-        if [ $? != 0 ]; then
+        if [[ $? != 0 ]]; then
             trap SIGINT
             return 1
         else
@@ -132,7 +151,7 @@ function run_forever {
         $@
         sleep_countdown $SLEEP_COUNT
 
-        if [ $? != 0 ]; then
+        if [[ $? != 0 ]]; then
             echo "To end loop, press ^C"
             sleep 1
         fi
@@ -140,7 +159,13 @@ function run_forever {
 }
 
 function count_redir {
-    curl -L -I -D - -o /dev/null $1 | awk 'BEGIN { redir = 0; status = 200; } tolower($1) ~ /http/ { redir=redir+1; status=$2 } tolower($1) ~ /location:/ { print redir, status, $2 } END { print "Completed, with ", redir-1, "redirects. Final result: ", status }'
+    curl -s -L -I -D - -o /dev/null $1 | awk '
+        BEGIN { redir = 0; status = 200; }
+        tolower($1) ~ /http/ { redir=redir+1; status=$2 }
+        tolower($1) ~ /location:/ { print redir, status, $2 }
+        END {
+            print "Completed, with ", redir-1, "redirects. Final result: ", status
+        }'
 }
 
 function curlt {
