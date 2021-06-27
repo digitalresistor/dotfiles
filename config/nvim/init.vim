@@ -115,18 +115,6 @@ function s:setupWrapping()
     set textwidth=79
 endfunction
 
-" If we get called without any arguments, pop open the SessionList. If we get
-" opened with an argument we call FileExplorer, which lets NERDTree do its
-" thing, if it is a directory it takes over and shows it, if it is a new file
-" it does nothing. Bloody fantastic!
-function s:NERDTreeOrSession()
-    if !argc()
-        silent! SessionList
-    else
-        silent! FileExplorer
-    endif
-endfunction
-
 " Make sure all markdown files have the correct filetype set and setup wrapping
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
 
@@ -141,9 +129,6 @@ au BufNewFile,Bufread wscript setf python
 
 " Follow Rust code style rules
 au Filetype rust set colorcolumn=100
-
-" Start with NERDTree or Session management
-au vimenter * call s:NERDTreeOrSession()
 
 syntax on               " I like syntax highlighting, you like syntax highlight, so lets turn it on.
 
