@@ -17,7 +17,7 @@ call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'andymass/vim-matchup'
+Plug 'andymass/vim-matchup', {'tag': 'v0.6.0'}
 Plug 'chriskempson/base16-vim'
 Plug 'ciaranm/securemodelines'
 Plug 'dense-analysis/ale'
@@ -153,10 +153,27 @@ endfunction
 " Use autocommand to force lightline updates
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-" Configure CoC
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+function! s:check_back_space() abort
+  let col = col('.') - 2
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <C-Space> coc#refresh()
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Open new NERD Tree window
 nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 "nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
