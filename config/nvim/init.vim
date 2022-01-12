@@ -33,14 +33,11 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Language specific plugins
-Plug 'cespare/vim-toml'
-Plug 'gabrielelana/vim-markdown'
-Plug 'hashivim/vim-terraform', {'for': 'tf'}
-Plug 'othree/html5.vim'
-Plug 'rust-lang/rust.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'stephpy/vim-yaml'
 
 " Initialize plugin system
