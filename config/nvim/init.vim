@@ -296,6 +296,10 @@ let g:ale_fixers = {
   \}
 let g:ale_c_clangformat_options = '--style=webkit --sort-includes'
 
+let g:coc_filetype_map = {
+  \ 'yaml.ansible': 'ansible',
+  \ }
+
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
