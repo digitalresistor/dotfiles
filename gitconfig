@@ -30,5 +30,5 @@
 [pull]
 	ff = only
 [alias]
-    fswitch = "!git branch --sort=-committerdate | sed -E 's/..(.*)/\\1/' | fzf | xargs git switch"
+    fswitch = "!f() { git branch --sort=-committerdate | sed -E 's/..(.*)/\\1/' | fzf --query=\"${1}\" | xargs git switch; }; f"
     cof = fswitch
