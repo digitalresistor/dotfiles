@@ -33,14 +33,11 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Language specific plugins
-Plug 'cespare/vim-toml'
-Plug 'gabrielelana/vim-markdown'
-Plug 'hashivim/vim-terraform', {'for': 'tf'}
-Plug 'othree/html5.vim'
-Plug 'rust-lang/rust.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'stephpy/vim-yaml'
 
 " Initialize plugin system
@@ -181,6 +178,9 @@ endif
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" Show available code actions for line
+nmap <silent> ga <Plug>(coc-codeaction-line)
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -224,7 +224,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Open new NERD Tree window
-nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 "nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
 
 " Set variables for Command T
@@ -298,6 +298,10 @@ let g:ale_fixers = {
   \   ]
   \}
 let g:ale_c_clangformat_options = '--style=webkit --sort-includes'
+
+let g:coc_filetype_map = {
+  \ 'yaml.ansible': 'ansible',
+  \ }
 
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
