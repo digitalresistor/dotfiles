@@ -224,7 +224,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Open new NERD Tree window
-nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 "nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
 
 " Set variables for Command T
