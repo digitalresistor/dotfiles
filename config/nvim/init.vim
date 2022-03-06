@@ -10,6 +10,12 @@ set nomodeline
 " This has to come before we load the plugins
 let g:ale_disable_lsp = 1
 
+" Markdown specific settings
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toml_frontmatter = 1
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
@@ -17,7 +23,7 @@ call plug#begin(stdpath('config') . '/plugged')
 
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'andymass/vim-matchup', {'tag': 'v0.6.0'}
+Plug 'andymass/vim-matchup', {'tag': 'v0.7.0'}
 Plug 'chriskempson/base16-vim'
 Plug 'ciaranm/securemodelines'
 Plug 'dense-analysis/ale'
@@ -27,7 +33,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeClose', 'NERDTreeToggle'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
@@ -38,7 +44,8 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Language specific plugins
 Plug 'sheerun/vim-polyglot'
-Plug 'stephpy/vim-yaml'
+Plug 'stephpy/vim-yaml', { 'for': ['yaml'] }
+Plug 'godlygeek/tabular', { 'for': ['markdown'] }
 
 " Initialize plugin system
 call plug#end()
@@ -129,10 +136,12 @@ au BufNewFile,Bufread wscript setf python
 " Follow Rust code style rules
 au Filetype rust set colorcolumn=100
 
-syntax on               " I like syntax highlighting, you like syntax highlight, so lets turn it on.
+" I like syntax highlighting, you like syntax highlight, so lets turn it on.
+syntax on
 
 " Lets use FZF
 nmap <leader>m :FZF<CR>
+nmap <leader>n :GFiles<CR>
 
 " Configure lightline
 let g:lightline = {
@@ -224,7 +233,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Open new NERD Tree window
-nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+nmap <leader>b :NERDTreeClose<CR>:NERDTreeToggle<CR>
 "nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
 
 " Set variables for Command T
