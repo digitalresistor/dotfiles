@@ -1,4 +1,4 @@
-export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:$PATH:~/Applications
+export PATH=~/.cargo/bin:~/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:$PATH:~/Applications
 
 # De-dup PATH, there's weird interactions between .zshenv and /etc/profile that
 # leaves a bunch of stuff riddled with duplicates, which makes the $PATH hard
