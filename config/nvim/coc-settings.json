@@ -1,4 +1,5 @@
 {
+    "coc.preferences.formatOnSaveFiletypes": ["rust"],
     "diagnostic.displayByAle": true,
     "languageserver": {
         "terraform": {
