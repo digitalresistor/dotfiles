@@ -111,7 +111,7 @@ function tox {
 
     if [[ ! -v TOX_PATH  && -x $PYENV ]]; then
         for pyv in $(pyenv versions --bare | sort -g -r); do
-            TOX_PATH="$(pyenv prefix $pyv)/bin:$TOX_PATH"
+            TOX_PATH="$TOX_PATH:$(pyenv prefix $pyv)/bin"
         done
     fi
 
