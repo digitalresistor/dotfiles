@@ -1,4 +1,5 @@
 {
+    "suggest.noselect": true,
     "coc.preferences.formatOnSaveFiletypes": ["rust"],
     "diagnostic.displayByAle": true,
     "languageserver": {
@@ -9,7 +10,8 @@
             "command": "terraform-ls",
             "filetypes": [
                 "terraform",
-                "tf"
+                "tf",
+                "tfvars"
             ],
             "initializationOptions": {}
         }
