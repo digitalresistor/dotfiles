@@ -1,7 +1,11 @@
 {
     "suggest.noselect": true,
-    "coc.preferences.formatOnSaveFiletypes": ["rust"],
     "diagnostic.displayByAle": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "~/.ve/pytools/bin/black",
+    "rust": {
+        "coc.preferences.formatOnSave": true
+    },
     "languageserver": {
         "terraform": {
             "args": [
