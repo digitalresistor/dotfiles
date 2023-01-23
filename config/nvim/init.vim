@@ -34,7 +34,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeClose', 'NERDTreeToggle'] }
+Plug 'preservim/nerdtree', { 'on':  ['NERDTreeClose', 'NERDTreeToggle'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-repeat'
