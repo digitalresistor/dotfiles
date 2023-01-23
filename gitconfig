@@ -9,6 +9,7 @@
     default = simple
 [init]
     templatedir = ~/dotfiles/git/templates
+    defaultBranch = main
 [filter "lfs"]
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
