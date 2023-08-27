@@ -24,7 +24,7 @@ call plug#begin(stdpath('config') . '/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Raimondi/delimitMate'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'andymass/vim-matchup', {'tag': 'v0.7.0'}
+Plug 'andymass/vim-matchup'
 Plug 'chriskempson/base16-vim'
 Plug 'ciaranm/securemodelines'
 Plug 'dense-analysis/ale'
@@ -50,6 +50,8 @@ Plug 'godlygeek/tabular', { 'for': ['markdown'] }
 
 " Initialize plugin system
 call plug#end()
+
+lua require('configs')
 
 filetype indent plugin on
 
