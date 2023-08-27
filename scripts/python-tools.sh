@@ -44,9 +44,8 @@ echo "Installing the Python tools"
     pyflakes \
     pylint \
     isort \
-    mypy
-
-~/.ve/pytools/bin/pip install -U flake8 black flake8-bugbear pyflakes pylint mypy
+    mypy \
+    tox
 
 for bin in \
     flake8 \
@@ -55,6 +54,7 @@ for bin in \
     pyflakes \
     pylint \
     isort \
+    tox \
     mypy;
 do
     echo "Linking $bin into ~/Applications/"

@@ -6,6 +6,14 @@
     "rust": {
         "coc.preferences.formatOnSave": true
     },
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/tasks.json": [
+            "**/tasks/*.yml",
+            "**/tasks/*.yaml",
+            "**/handlers/*.yml",
+            "**/handlers/*.yaml"
+        ]
+    },
     "languageserver": {
         "terraform": {
             "args": [
